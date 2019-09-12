@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+
+android {
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        archivesBaseName = "$archivesBaseName-$versionName"
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+}
+apply plugin: 'com.novoda.bintray-release'
+
+tasks.withType(Javadoc) {
+    options.encoding = "UTF-8"
+}
+publish {
+    userOrg = 'askedevelop' //bintray账户下某个组织id
+    repoName = 'keepLive' //远程仓库名
+    groupId = 'com.project.keeplivelibrary' //maven仓库下库的包名，一般为模块包名
+    artifactId = 'keepLiveLib' //项目名称
+    publishVersion = '1.0.0' //版本号
+    desc = 'keep live for android' //项目介绍，可以不写
+    website = '' //项目主页，可以不写
+    licences = ['Apache-2.0']
+}

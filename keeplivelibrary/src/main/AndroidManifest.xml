@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.project.keeplivelibrary">
+
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <application>
+
+
+
+        <activity android:name=".ui.OnePixelActivity"
+                  android:theme="@style/onePixelActivity"
+                  android:launchMode="singleInstance"
+                  android:excludeFromRecents="true"/>
+        <receiver android:name=".receiver.NotificationClickReceiver"/>
+        <service android:name=".service.LocalService"/>
+        <service android:name=".service.RemoteService"  android:permission=":remote"/>
+        <service android:name=".service.JobHandlerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name=".service.HideForgroundService"/>
+    </application>
+
+</manifest>
